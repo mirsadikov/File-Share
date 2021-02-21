@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send</title>
+    <style>
+      .success {
+        background-color: lightgreen;
+        border: 1px solid green;
+        padding: 10px;
+        display: none;
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <p><a href="index.html">Home</a></p>
+    <div class="success" id="success">Files uploaded successfully.</div>
+    <form action="/api/send" method="POST" enctype="multipart/form-data">
+      <label for="file">Select files:</label>
+      <input type="file" id="file" name="uploadFiles" multiple /><br /><br />
+      <input type="submit" />
+    </form>
+  </body>
+  <script>
+    window.onload = () => {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const success = urlParams.get("success");
+      console.log(success);
+      if (success == "true") {
+        document.querySelector("#success").style.display = "inline-block";
+      }
+    };
+  </script>
+</html>

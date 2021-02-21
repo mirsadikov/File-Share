@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recieve</title>
+  </head>
+  <body>
+    <p><a href="index.html">Home</a></p>
+    <h2>Sent files:</h2>
+    <div id="container"></div>
+    <a href="/api/delete"><button id="downloadAll">Delete all files</button></a>
+  </body>
+
+  <script>
+    var dataArray;
+    function renderData(data) {
+      var contaier = document.querySelector("#container");
+      console.log(data);
+      data.forEach((element) => {
+        contaier.innerHTML += `<p><a href="/api/recieve/${element}">${element}</a></p>`;
+      });
+    }
+    window.onload = () => {
+      fetch("/api/recieve")
+        .then((response) => response.json())
+        .then((data) => {
+          dataArray = data;
+          console.log(dataArray);
+          renderData(data);
+        });
+    };
+  </script>
+</html>
