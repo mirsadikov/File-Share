@@ -3,25 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 user-scalable=no"
+    />
     <title>Send</title>
-    <style>
-      .success {
-        background-color: lightgreen;
-        border: 1px solid green;
-        padding: 10px;
-        display: none;
-        margin: 15px;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p><a href="index.html">Home</a></p>
+    <p><a href="index.html" class="header">Home</a></p>
     <div class="success" id="success">Files uploaded successfully.</div>
     <form action="/api/send" method="POST" enctype="multipart/form-data">
       <label for="file">Select files:</label>
       <input type="file" id="file" name="uploadFiles" multiple /><br /><br />
-      <input type="submit" />
+      <input type="submit" id="submitbtn" />
     </form>
   </body>
   <script>

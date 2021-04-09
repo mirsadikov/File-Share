@@ -25,6 +25,7 @@ app.use(multer({ storage: storageConfig }).array("uploadFiles", 5));
 
 app.get("/api/delete", (req, res) => {
   fs.readdir("files", (err, files) => {
+    files = files.filter((file) => file !== "text.txt");
     files.forEach((file) => {
       fs.unlink(path.join("files", file), (err) => {
         if (err) {
@@ -52,6 +53,7 @@ app.get("/api/recieve/:id", (req, res) => {
 app.get("/api/recieve", (req, res) => {
   var data = [];
   fs.readdir("files", (err, files) => {
+    files = files.filter((file) => file !== "text.txt");
     res.send(files);
   });
 });
@@ -66,4 +68,3 @@ app.listen(PORT, () => {
 function uniqueID() {
   return "_" + Math.random().toString(36).substr(2, 9);
 }
-
